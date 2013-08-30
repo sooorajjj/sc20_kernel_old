@@ -55,3 +55,4 @@ obj-$(CONFIG_DRM_TILCDC)	+= tilcdc/
 obj-$(CONFIG_DRM_QXL) += qxl/
 obj-$(CONFIG_DRM_MSM) += msm/
 obj-y			+= i2c/
+obj-y			+= panel/
