@@ -327,8 +327,6 @@ static const struct of_device_id platform_of_match[] = {
 		.compatible = "chunghwa,claa101wb01",
 		.data = &chunghwa_claa101wb01
 	}, {
-		.compatible = "simple-panel",
-	}, {
 		/* sentinel */
 	}
 };
