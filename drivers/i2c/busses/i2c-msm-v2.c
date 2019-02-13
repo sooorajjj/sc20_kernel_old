@@ -32,7 +32,6 @@
 #include <linux/dma-mapping.h>
 #include <linux/i2c.h>
 #include <linux/of.h>
-#include <linux/of_i2c.h>
 #include <linux/msm-sps.h>
 #include <linux/msm-bus.h>
 #include <linux/msm-bus-board.h>
@@ -2820,7 +2819,6 @@ static int i2c_msm_frmwrk_reg(struct platform_device *pdev,
 
 	if (ctrl->dev->of_node) {
 		ctrl->adapter.dev.of_node = pdev->dev.of_node;
-		of_i2c_register_devices(&ctrl->adapter);
 	}
 
 	return ret;

@@ -403,12 +403,14 @@ static const struct panel_desc panasonic_vvx10f004b00 = {
 
 static int __init panel_simple_init(void)
 {
+    printk("panel-simple: init....\n");
 	return platform_driver_register(&panel_simple_platform_driver);
 }
 module_init(panel_simple_init);
 
 static void __exit panel_simple_exit(void)
 {
+	printk("panel-simple: init....\n");
 	platform_driver_unregister(&panel_simple_platform_driver);
 }
 module_exit(panel_simple_exit);
