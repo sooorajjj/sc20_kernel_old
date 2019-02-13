@@ -16,6 +16,23 @@
 #include "msm8909-regulator.dtsi"
 
 &soc {
+
+				/*
+				 *power-supply = <&avdd_lcd_reg>;
+				 *backlight = <&backlight>;
+				 */
+
+	host1x@50000000 {
+		dsi@54300000 {
+			status = "okay";
+
+			panel@0 {
+				compatible = "sc20,ili9881c",
+					     "simple-panel";
+				reg = <0>;				
+			};
+		};
+	};
        gpio-clock {
                compatible = "qcom,gpio_clk";
                pwm-gpio = <31>;
