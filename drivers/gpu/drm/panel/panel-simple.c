@@ -136,6 +136,10 @@ static int panel_simple_enable(struct drm_panel *panel)
 		dev_err(panel->dev, "failed to enable supply: %d\n", err);
 		return err;
 	}
+	// gpio_set_value(95, 1);
+
+	// msleep(5);
+
 
 	if (gpio_is_valid(p->enable_gpio)) {
 		if (p->enable_gpio_flags & GPIO_ACTIVE_LOW)
@@ -143,6 +147,13 @@ static int panel_simple_enable(struct drm_panel *panel)
 		else
 			gpio_set_value(p->enable_gpio, 1);
 	}
+
+	// gpio_set_value(25, 1);
+	// msleep(20);
+
+	// gpio_set_value(25, 0);
+	// msleep(20);
+
 
 	if (p->backlight) {
 		p->backlight->props.power = FB_BLANK_UNBLANK;
@@ -399,7 +410,7 @@ struct panel_desc_dsi {
 	unsigned int lanes;
 };
 
-clock = 908 * 1312 * 60 / 100
+/*clock = 908 * 1312 * 60 / 100*/
 
 static const struct drm_display_mode sc20_ili9881c_mode = {
 	.clock = 714778,
@@ -762,7 +773,7 @@ module_init(panel_simple_init);
 
 static void __exit panel_simple_exit(void)
 {
-	printk("panel-simple: init....\n");
+	printk("panel-simple: Exit....\n");
 	/*if (IS_ENABLED(CONFIG_DRM_MIPI_DSI))*/
 		mipi_dsi_driver_unregister(&panel_simple_dsi_driver);
 	

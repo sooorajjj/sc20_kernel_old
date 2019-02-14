@@ -17,22 +17,24 @@
 
 &soc {
 
-				/*
-				 *power-supply = <&avdd_lcd_reg>;
-				 *backlight = <&backlight>;
-				 */
-
-	host1x@50000000 {
-		dsi@54300000 {
-			status = "okay";
-
-			panel@0 {
-				compatible = "sc20,ili9881c",
-					     "simple-panel";
-				reg = <0>;				
-			};
-		};
+	panel@0 {
+		compatible = "sc20,ili9881c", "ilitek,ili9881c";
+		reg = <0>;
+		power-supply = <&reg_display>;
+		reset-gpios = <&msm_gpio 25 0>;
+		backlight = <&backlight>;
 	};
+
+
+	backlight: backlight {
+		compatible = "pwm-backlight";
+
+		power-supply = <&vdd_bl_reg>;
+
+		brightness-levels = <0 4 8 16 32 64 128 255>;
+		default-brightness-level = <120>;
+	};
+
        gpio-clock {
                compatible = "qcom,gpio_clk";
                pwm-gpio = <31>;
@@ -43,6 +45,12 @@
 	 * with VM-BMS.
 	 */
 	i2c@78b8000 {
+		reg_display: fet4 {
+			regulator-name = "avdd-lcd";
+		};
+		vdd_bl_reg: fet1 {
+			regulator-name = "vdd-lcd-bl";
+		};
 		smb1357_otg_vreg: smb1357-charger@57 {
 			compatible = "qcom,smb1357-charger";
 			reg = <0x57>;
