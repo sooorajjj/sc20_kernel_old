@@ -399,8 +399,10 @@ struct panel_desc_dsi {
 	unsigned int lanes;
 };
 
+clock = 908 * 1312 * 60 / 100
+
 static const struct drm_display_mode sc20_ili9881c_mode = {
-	.clock = 67000,
+	.clock = 714778,
 	.hdisplay = 720,
 	.hsync_start = 720 + 52,
 	.hsync_end = 720 + 52 + 36,
@@ -515,7 +517,7 @@ static int panel_simple_dsi_probe(struct mipi_dsi_device *dsi)
 	dsi->mode_flags = desc->flags;
 
 	/*Display on-command sc20,ili9881c */
-	/*ret = mipi_dsi_dcs_write(dsi, 0xff, (u8[]){ 0x98, 0x81, 0x03 }, 1);*/
+	ret = mipi_dsi_dcs_write(dsi, 0xff, (u8[]){ 0x98, 0x81, 0x03 }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0x01, (u8[]){ 0x00 }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0x02, (u8[]){ 0x00 }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0x03, (u8[]){ 0x73 }, 1);
@@ -643,7 +645,7 @@ static int panel_simple_dsi_probe(struct mipi_dsi_device *dsi)
 	ret = mipi_dsi_dcs_write(dsi, 0x88, (u8[]){ 0x02 }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0x89, (u8[]){ 0x02 }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0x8a, (u8[]){ 0x02 }, 1);
-	/*ret = mipi_dsi_dcs_write(dsi, 0xff, (u8[]){ 0x98, 0x81, 0x04 }, 1);*/
+	ret = mipi_dsi_dcs_write(dsi, 0xff, (u8[]){ 0x98, 0x81, 0x04 }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0x6c, (u8[]){ 0x15 }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0x6e, (u8[]){ 0x22 }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0x6f, (u8[]){ 0x33 }, 1);
@@ -652,7 +654,7 @@ static int panel_simple_dsi_probe(struct mipi_dsi_device *dsi)
 	ret = mipi_dsi_dcs_write(dsi, 0x87, (u8[]){ 0xba }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0x26, (u8[]){ 0x76 }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0xb2, (u8[]){ 0xd1 }, 1);
-	/*ret = mipi_dsi_dcs_write(dsi, 0xff, (u8[]){ 0x98, 0x81, 0x01 }, 1);*/
+	ret = mipi_dsi_dcs_write(dsi, 0xff, (u8[]){ 0x98, 0x81, 0x01 }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0x22, (u8[]){ 0x0a }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0x53, (u8[]){ 0xbe }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0x55, (u8[]){ 0xa7 }, 1);
@@ -700,7 +702,7 @@ static int panel_simple_dsi_probe(struct mipi_dsi_device *dsi)
 	ret = mipi_dsi_dcs_write(dsi, 0xd1, (u8[]){ 0x53 }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0xd2, (u8[]){ 0x62 }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0xd3, (u8[]){ 0x3f }, 1);
-	/*ret = mipi_dsi_dcs_write(dsi, 0xff, (u8[]){ 0x98, 0x81, 0x00 }, 1);*/
+	ret = mipi_dsi_dcs_write(dsi, 0xff, (u8[]){ 0x98, 0x81, 0x00 }, 1);
 	msleep(1);
 	ret = mipi_dsi_dcs_write(dsi, 0x11, (u8[]){ 0x00 }, 1);
 	ret = mipi_dsi_dcs_write(dsi, 0x29, (u8[]){ 0x00 }, 1);
